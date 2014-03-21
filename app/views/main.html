@@ -1,35 +1,53 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
 
-  <label>Toggle:</label>
-    <button type="button" class="btn btn-default" ng-model="button.toggle" bs-checkbox>Toggle</button>
-    <!-- You can also use custom values with the `data-true-value` & `data-false-value` attributes -->
-
-    <hr><label>Checkboxes:</label>
-    <div class="btn-group" ng-model="button.checkbox" bs-checkbox-group>
-      <label class="btn btn-lg btn-primary btn-default"><input type="checkbox" value="left"> Left</label>
-      <label class="btn btn-lg btn-primary btn-default"><input type="checkbox" value="middle"> Middle</label>
-      <label class="btn btn-lg btn-primary btn-default"><input type="checkbox" value="right"> Right</label>
-      <!-- Children get compiled by `bs-checkbox-group` to :
-      <label class="btn btn-default"><input type="checkbox" value="left" ng-model="button.checkbox.left" bs-checkbox> Left</label>
-      ...
-      -->
+<div style="padding:10px">
+  <btn ng-click="showValues()" class="btn-primary btn-lg">Click me!</btn>
+  <form name="timepickerForm" role="form" class="form-horizontal">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">活动名称</label>
+      <div class="col-sm-6">
+        <input name="title" type="text" placeholder="活动名称" class="form-control"/>
+      </div>
     </div>
-
-    <hr><label>Radios:</label>
-    <div class="btn-group" ng-model="button.radio" bs-radio-group>
-      <label class="btn btn-default"><input type="radio" class="btn btn-default" value="0"> First</label>
-      <label class="btn btn-default"><input type="radio" class="btn btn-default" value="1"> Second</label>
-      <label class="btn btn-default"><input type="radio" class="btn btn-default" value="2"> Third</label>
-      <!-- Children get compiled by `bs-radio-group` to :
-      <label class="btn btn-default"><input type="radio" class="btn btn-default" value="left" ng-model="button.radio" bs-radio> Left</label>
-      ...
-      -->
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">活动类型</label>
+      <div class="col-sm-6">
+        <div ng-model="button.radio" bs-radio-group="bs-radio-group" class="btn-group">
+          <div class="btn btn-default">
+            <input type="radio" value="1" class="btn btn-default"/>所有人可见
+          </div>
+          <div class="btn btn-default">
+            <input type="radio" value="2" class="btn btn-default"/>注册用户可参加
+          </div>
+          <div class="btn btn-default">
+            <input type="radio" value="3" class="btn btn-default"/>有电话可参加
+          </div>
+          <div class="btn btn-default">
+            <input type="radio" value="4" class="btn btn-default"/>激活参加
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">活动类型</label>
+      <div class="col-sm-6">
+        <div ng-model="button.checkbox" bs-checkbox-group="bs-checkbox-group" class="btn-group">
+          <div class="btn btn-default">
+            <input type="checkbox" value="left" class="btn btn-default"/>First
+          </div>
+          <div class="btn btn-default">
+            <input type="checkbox" value="middle" class="btn btn-default"/>Second
+          </div>
+          <div class="btn btn-default">
+            <input type="checkbox" value="right" class="btn btn-default"/>Third
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">活动名称</label>
+      <div class="col-sm-6">
+        <input name="title" type="text" placeholder="活动名称" class="form-control"/>
+      </div>
+    </div>
+  </form>
 </div>

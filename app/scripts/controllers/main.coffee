@@ -1,6 +1,6 @@
 "use strict"
 angular.module("MobileCMSApp").controller "MainCtrl", ['$scope', 'Activity' ,($scope, Activity) ->
-  console.log Activity.query()
+  $scope.activities = Activity.query()
   $scope.awesomeThings = [
     "HTML5 Boilerplate"
     "AngularJS"
@@ -13,5 +13,7 @@ angular.module("MobileCMSApp").controller "MainCtrl", ['$scope', 'Activity' ,($s
       middle: true
       right: false
 
-    radio: "left"
+    radio: "middle"
+  $scope.showValues = =>
+    console.log $scope.button
 ]

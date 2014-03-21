@@ -2,16 +2,21 @@
 "use strict";
 angular.module("MobileCMSApp").controller("MainCtrl", [
   '$scope', 'Activity', function($scope, Activity) {
-    console.log(Activity.query());
+    $scope.activities = Activity.query();
     $scope.awesomeThings = ["HTML5 Boilerplate", "AngularJS", "Karma"];
-    return $scope.button = {
+    $scope.button = {
       toggle: false,
       checkbox: {
         left: false,
         middle: true,
         right: false
       },
-      radio: "left"
+      radio: "middle"
     };
+    return $scope.showValues = (function(_this) {
+      return function() {
+        return console.log($scope.button);
+      };
+    })(this);
   }
 ]);
