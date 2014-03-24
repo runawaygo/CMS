@@ -1,5 +1,5 @@
 "use strict"
-angular.module("MobileCMSApp").controller "MainCtrl", ['$scope', 'Activity' ,($scope, Activity) ->
+angular.module("MobileCMSApp").controller "ActivityCtrl", ['$scope', 'Activity' ,($scope, Activity) ->
   # $scope.activities = Activity.query()
   $scope.awesomeThings = [
     "HTML5 Boilerplate"

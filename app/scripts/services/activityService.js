@@ -3,7 +3,7 @@ console.log('superwolf');
 
 angular.module("ActivityService", ["ngResource"]).factory('Activity', [
   '$resource', function($resource) {
-    return $resource('http://127.0.0.1\\:6008/activities.json', {}, {
+    return $resource('http://127.0.0.1\\:6008/activities', {}, {
       query: {
         method: 'GET',
         params: {},

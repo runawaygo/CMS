@@ -7,6 +7,10 @@ angular.module('MobileCMSApp', ["ngRoute", "ngResource", "mgcrea.ngStrap", "Acti
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/activity/:id', {
+        templateUrl: 'views/activity.html',
+        controller: 'ActivityCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
