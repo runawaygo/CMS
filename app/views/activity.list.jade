@@ -1,0 +1,29 @@
+div(style="padding :10px")
+  div.btn.btn-primary(ng-click="show()") Show
+  table.table.table-hover 
+    thead
+      tr
+        th ID
+        th 名称
+        th 参与人数
+        th 类型
+        th 状态
+        th 优先级
+        th 发布
+    tbody
+      tr(ng-repeat="item in activityList" ng-class="{warning: item.status == 0 && item.published, info: item.published}" ) 
+        td #[{{item.id}}] 
+        td {{item.title}}
+        td {{item.participate}}
+        td {{item.type | activityTypeTranslate}}
+        td {{item.status | activityStatusTranslate}}
+        td {{item.order}}
+        td {{item.published | activityPublishedTranslate}}
+        td
+          div.btn.btn-danger(ng-click="item.remove()") 编辑      
+        td
+          div.btn.btn-danger(ng-click="delete(item)") 删除
+
+
+        
+    

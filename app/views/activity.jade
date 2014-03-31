@@ -1,21 +1,19 @@
 div(style="padding :10px")
-  btn.btn-primary.btn-lg(ng-click="showValues()")
-    | Click me!
   form.form-horizontal(name='', role='form')
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动名称 :
       div.col-sm-6
         input.form-control(name="title", type="text", ng-model="activity.title", placeholder="活动名称")
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动描述 :
       div.col-sm-6
         input.form-control(name="desc", type="text", ng-model="activity.desc", placeholder="活动描述")
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动类型 :
       div.col-sm-6
         div.btn-group(ng-model="activity.type" bs-radio-group)
@@ -33,54 +31,52 @@ div(style="padding :10px")
             | 激活可参加
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 优先级别 :
       div.col-sm-6
         input.form-control(name="order", type="number",  ng-model="activity.order", max="{{activity.order}}")
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动类型 :
       div.col-sm-6
         div.btn-group(ng-model="activity.status" bs-radio-group)
-          div.btn.btn-default
-            input(type="radio" value="1")
+          label.btn.btn-default
+            input.btn.btn-default(type="radio" value="1")
             | 开启
-          div.btn.btn-default
-            input(type="radio" value="0")
+          label.btn.btn-default
+            input.btn.btn-default(type="radio" value="0")
             | 关闭
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动发布 :
       div.col-sm-6
-        div.btn-group(ng-model="activity.published" bs-radio-group)
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="1")
-            | 上线
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="0")
-            | 下线
+        div.btn.btn-default(type="button"  ng-model="activity.published" bs-checkbox) 发布
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动地址 :
       div.col-sm-6
         input.form-control(name="url", type="url", ng-model="activity.url", ng-required="true")
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 活动图片 :
       div.col-sm-6
         input.form-control(name="img", type="url", ng-model="activity.img", ng-required="true")
 
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3")
+      label.col-sm-2.control-label
         | 分享数量 :
       div.col-sm-6
         input.form-control(name="share", type="number", ng-model="activity.share", ng-required="true", readonly="readonly")
 
-    button.btn.btn-default(type="submit") Submit
-
+    div.form-group
+      label.col-sm-2.control-label
+      div.col-sm-6
+        a.btn.btn-success(ng-hide="id" ng-click="create()") 创建
+        button.btn.btn-success(type="submit" ng-show="id") 更新
+        button.btn.btn-default(type="submit") 取消
 
 

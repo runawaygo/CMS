@@ -4,17 +4,13 @@ angular.module("MobileCMSApp").controller("MainCtrl", [
   '$scope', 'Activity', function($scope, Activity) {
     $scope.awesomeThings = ["HTML5 Boilerplate", "AngularJS", "Karma"];
     $scope.activity = {
-      title: "今晚打老虎",
       type: 1,
-      status: 1,
-      published: true,
-      order: 0,
-      radio: "middle"
+      status: {
+        1: true
+      }
     };
-    return $scope.showValues = (function(_this) {
-      return function() {
-        return console.log($scope.activity);
-      };
-    })(this);
+    return $scope.show = function() {
+      return console.log($scope.activity);
+    };
   }
 ]);

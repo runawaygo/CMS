@@ -6,14 +6,11 @@ angular.module("MobileCMSApp").controller "MainCtrl", ['$scope', 'Activity' ,($s
     "AngularJS"
     "Karma"
   ]
-  $scope.activity =
-    title: "今晚打老虎"
-    type: 1
-    status: 1
-    published: 1
-    order: 0
 
-    radio: "middle"
-  $scope.showValues = =>
+  $scope.activity = 
+    type: 1
+    status:
+      1: true
+  $scope.show = ->
     console.log $scope.activity
 ]

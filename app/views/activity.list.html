@@ -1,0 +1,34 @@
+
+<div style="padding :10px">
+  <div ng-click="show()" class="btn btn-primary">Show</div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>参与人数</th>
+        <th>类型</th>
+        <th>状态</th>
+        <th>优先级</th>
+        <th>发布</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in activityList" ng-class="{warning: item.status == 0 &amp;&amp; item.published, info: item.published}">
+        <td>{{item.id}} </td>
+        <td>{{item.title}}</td>
+        <td>{{item.participate}}</td>
+        <td>{{item.type | activityTypeTranslate}}</td>
+        <td>{{item.status | activityStatusTranslate}}</td>
+        <td>{{item.order}}</td>
+        <td>{{item.published | activityPublishedTranslate}}</td>
+        <td>
+          <div ng-click="item.remove()" class="btn btn-danger">编辑      </div>
+        </td>
+        <td>
+          <div ng-click="delete(item)" class="btn btn-danger">删除</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
