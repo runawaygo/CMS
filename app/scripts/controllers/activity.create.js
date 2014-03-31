@@ -17,6 +17,9 @@ angular.module("MobileCMSApp").controller("ActivityCreateCtrl", [
       };
       return Restangular.all('activities').post(body).then(function(activity) {
         return $location.path('/activity');
+      }, function() {
+        console.log('create error');
+        return console.log(arguments);
       });
     };
   }

@@ -12,11 +12,17 @@ angular.module("MobileCMSApp").controller("ActivityEditCtrl", [
       };
       return $scope.activity.customPUT(body).then(function(activity) {
         return $location.path('/activity');
+      }, function() {
+        console.log('update error');
+        return console.log(arguments);
       });
     };
     return $scope["delete"] = function() {
       return $scope.activity.remove().then(function(activity) {
         return $location.path('/activity');
+      }, function() {
+        console.log('delete error');
+        return console.log(arguments);
       });
     };
   }

@@ -16,10 +16,16 @@ angular.module("MobileCMSApp").controller "ActivityEditCtrl", [
       body = {Activity: $scope.activity}
       $scope.activity.customPUT(body).then((activity)->
         $location.path('/activity')
-      )
+      ,->
+        console.log 'update error'
+        console.log arguments
+      ) 
 
     $scope.delete = ->
       $scope.activity.remove().then((activity)->
         $location.path('/activity')
-      )
+      ,->
+        console.log 'delete error'
+        console.log arguments
+      ) 
 ]

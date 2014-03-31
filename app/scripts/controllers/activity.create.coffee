@@ -13,5 +13,8 @@ angular.module("MobileCMSApp").controller "ActivityCreateCtrl", ['$scope', 'Acti
     body = {Activity:$scope.activity}
     Restangular.all('activities').post(body).then((activity)->
       $location.path('/activity')
+    ,->
+      console.log 'create error'
+      console.log arguments
     )
 ]
