@@ -1,82 +1,91 @@
 div(style="padding :10px")
-  form.form-horizontal(name='', role='form')
+  form.form-horizontal(name=''  role='form' ng-submit="submit()")
     div.form-group
       label.col-sm-2.control-label
-        | 活动名称 :
+        | 名称 :
       div.col-sm-6
-        input.form-control(name="title", type="text", ng-model="activity.title", placeholder="活动名称")
+        input.form-control(name="title" type="text" ng-model="activity.title" placeholder="活动名称" ng-required="true")
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动描述 :
+        | 描述 :
       div.col-sm-6
-        input.form-control(name="desc", type="text", ng-model="activity.desc", placeholder="活动描述")
+        input.form-control(name="desc" type="text" ng-model="activity.desc", placeholder="活动描述")
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动类型 :
+        | 类型 :
       div.col-sm-6
         div.btn-group(ng-model="activity.type" bs-radio-group)
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="1")
+          label.btn.btn-default
+            input(type="radio" value="1")
             | 所有人可参加
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="2")
+          label.btn.btn-default
+            input(type="radio" value="2")
             | 注册用户可参加
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="3")
+          label.btn.btn-default
+            input(type="radio" value="3")
             | 有电话可参加
-          div.btn.btn-default
-            input.btn.btn-default(type="radio" value="4")
+          label.btn.btn-default
+            input(type="radio" value="4")
             | 激活可参加
 
     div.form-group
       label.col-sm-2.control-label
-        | 优先级别 :
+        | 排序 :
       div.col-sm-6
         input.form-control(name="order", type="number",  ng-model="activity.order", max="{{activity.order}}")
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动类型 :
+        | 类型 :
       div.col-sm-6
         div.btn-group(ng-model="activity.status" bs-radio-group)
-          label.btn.btn-default
-            input.btn.btn-default(type="radio" value="1")
+          label.btn.btn-default(ng-class="{'btn-success': activity.status == 1}")
+            input(type="radio" value="1")
             | 开启
-          label.btn.btn-default
-            input.btn.btn-default(type="radio" value="0")
+          label.btn.btn-default(ng-class="{'btn-warning': activity.status ==0}")
+            input(type="radio" value="0")
             | 关闭
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动发布 :
+        | 发布 :
       div.col-sm-6
-        div.btn.btn-default(type="button"  ng-model="activity.published" bs-checkbox) 发布
+        div.btn.btn-default(ng-model="activity.published" ng-class="{'btn-success': activity.published}" bs-checkbox) 发布
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动地址 :
+        | 地址 :
       div.col-sm-6
         input.form-control(name="url", type="url", ng-model="activity.url", ng-required="true")
 
     div.form-group
       label.col-sm-2.control-label
-        | 活动图片 :
+        | 图片 :
       div.col-sm-6
         input.form-control(name="img", type="url", ng-model="activity.img", ng-required="true")
 
     div.form-group
       label.col-sm-2.control-label
-        | 分享数量 :
+        | 分享 :
       div.col-sm-6
         input.form-control(name="share", type="number", ng-model="activity.share", ng-required="true", readonly="readonly")
 
-    div.form-group
+    div.form-group.form-action
       label.col-sm-2.control-label
       div.col-sm-6
-        a.btn.btn-success(ng-hide="id" ng-click="create()") 创建
-        button.btn.btn-success(type="submit" ng-show="id") 更新
-        button.btn.btn-default(type="submit") 取消
+        button.btn.btn-primary(type="submit" ng-hide="activity.id")
+          span.glyphicon.glyphicon-ok
+          |&nbsp;创建 
+        button.btn.btn-primary(type="submit" ng-show="activity.id") 
+          span.glyphicon.glyphicon-ok
+          |&nbsp;更新
+        a.btn.btn-default(ng-href="#/activity")
+          span.glyphicon.glyphicon-off
+          |&nbsp;取消
+        a.delete-btn.btn.btn-danger(type="delete" ng-show="activity.id" ng-click="delete()")
+          span.glyphicon.glyphicon-remove
+          |&nbsp;删除
 
 

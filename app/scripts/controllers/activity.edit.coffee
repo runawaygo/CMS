@@ -1,14 +1,25 @@
 "use strict"
-angular.module("MobileCMSApp").controller "ActivityEditCtrl", ['$scope', 'Activity' ,($scope, Activity) ->
+angular.module("MobileCMSApp").controller "ActivityEditCtrl", [
+  '$scope'
+  'Activity'
+  '$routeParams'
+  'Restangular'
+  '$location'
+  ($scope, Activity, $routeParams, Restangular, $location) ->
+    Restangular.setBaseUrl('http://127.0.0.1:6008')
+    Restangular.setRequestSuffix('.json')
 
-  $scope.awesomeThings = [
-    "HTML5 Boilerplate"
-    "AngularJS"
-    "Karma"
-  ]
-  $scope.activity = Activity.get({id:97})
 
+    $scope.activity = Restangular.one('activities', $routeParams.id).get().$object
 
-  $scope.showValues = =>
-    console.log $scope.activity
+    $scope.submit = ->
+      body = {Activity: $scope.activity}
+      $scope.activity.customPUT(body).then((activity)->
+        $location.path('/activity')
+      )
+
+    $scope.delete = ->
+      $scope.activity.remove().then((activity)->
+        $location.path('/activity')
+      )
 ]

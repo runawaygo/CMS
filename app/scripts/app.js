@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('MobileCMSApp', ["ngRoute", "ngResource", "restangular", "mgcrea.ngStrap", "ActivityService"])
+angular.module('MobileCMSApp', ["ngRoute", "restangular", "mgcrea.ngStrap", "ActivityService"])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/activity.list.html',
+        controller: 'ActivityListCtrl'
       })
       // .when('/', {
       //   templateUrl: 'views/activity.html',

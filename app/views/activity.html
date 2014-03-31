@@ -1,85 +1,85 @@
 
 <div style="padding :10px">
-  <form name="" role="form" class="form-horizontal">
+  <form name="" role="form" ng-submit="submit()" class="form-horizontal">
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动名称 :</label>
+      <label class="col-sm-2 control-label">名称 :</label>
       <div class="col-sm-6">
-        <input name="title" type="text" ng-model="activity.title" placeholder="活动名称" class="form-control"/>
+        <input name="title" type="text" ng-model="activity.title" placeholder="活动名称" ng-required="true" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动描述 :</label>
+      <label class="col-sm-2 control-label">描述 :</label>
       <div class="col-sm-6">
         <input name="desc" type="text" ng-model="activity.desc" placeholder="活动描述" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动类型 :</label>
+      <label class="col-sm-2 control-label">类型 :</label>
       <div class="col-sm-6">
         <div ng-model="activity.type" bs-radio-group="bs-radio-group" class="btn-group">
-          <div class="btn btn-default">
-            <input type="radio" value="1" class="btn btn-default"/>所有人可参加
-          </div>
-          <div class="btn btn-default">
-            <input type="radio" value="2" class="btn btn-default"/>注册用户可参加
-          </div>
-          <div class="btn btn-default">
-            <input type="radio" value="3" class="btn btn-default"/>有电话可参加
-          </div>
-          <div class="btn btn-default">
-            <input type="radio" value="4" class="btn btn-default"/>激活可参加
-          </div>
+          <label class="btn btn-default">
+            <input type="radio" value="1"/>所有人可参加
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" value="2"/>注册用户可参加
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" value="3"/>有电话可参加
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" value="4"/>激活可参加
+          </label>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">优先级别 :</label>
+      <label class="col-sm-2 control-label">排序 :</label>
       <div class="col-sm-6">
         <input name="order" type="number" ng-model="activity.order" max="{{activity.order}}" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动类型 :</label>
+      <label class="col-sm-2 control-label">类型 :</label>
       <div class="col-sm-6">
         <div ng-model="activity.status" bs-radio-group="bs-radio-group" class="btn-group">
-          <label class="btn btn-default">
-            <input type="radio" value="1" class="btn btn-default"/>开启
+          <label ng-class="{'btn-success': activity.status == 1}" class="btn btn-default">
+            <input type="radio" value="1"/>开启
           </label>
-          <label class="btn btn-default">
-            <input type="radio" value="0" class="btn btn-default"/>关闭
+          <label ng-class="{'btn-warning': activity.status ==0}" class="btn btn-default">
+            <input type="radio" value="0"/>关闭
           </label>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动发布 :</label>
+      <label class="col-sm-2 control-label">发布 :</label>
       <div class="col-sm-6">
-        <div type="button" ng-model="activity.published" bs-checkbox="bs-checkbox" class="btn btn-default">发布</div>
+        <div ng-model="activity.published" ng-class="{'btn-success': activity.published}" bs-checkbox="bs-checkbox" class="btn btn-default">发布</div>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动地址 :</label>
+      <label class="col-sm-2 control-label">地址 :</label>
       <div class="col-sm-6">
         <input name="url" type="url" ng-model="activity.url" ng-required="true" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">活动图片 :</label>
+      <label class="col-sm-2 control-label">图片 :</label>
       <div class="col-sm-6">
         <input name="img" type="url" ng-model="activity.img" ng-required="true" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">分享数量 :</label>
+      <label class="col-sm-2 control-label">分享 :</label>
       <div class="col-sm-6">
         <input name="share" type="number" ng-model="activity.share" ng-required="true" readonly="readonly" class="form-control"/>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group form-action">
       <label class="col-sm-2 control-label"></label>
-      <div class="col-sm-6"><a ng-hide="id" ng-click="create()" class="btn btn-success">创建</a>
-        <button type="submit" ng-show="id" class="btn btn-success">更新</button>
-        <button type="submit" class="btn btn-default">取消</button>
+      <div class="col-sm-6">
+        <button type="submit" ng-hide="activity.id" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;创建 </button>
+        <button type="submit" ng-show="activity.id" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;更新</button><a ng-href="#/activity" class="btn btn-default"><span class="glyphicon glyphicon-off"></span>&nbsp;取消</a><a type="delete" ng-show="activity.id" ng-click="delete()" class="delete-btn btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</a>
       </div>
     </div>
   </form>

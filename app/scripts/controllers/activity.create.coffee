@@ -1,27 +1,17 @@
 "use strict"
-angular.module("MobileCMSApp").controller "ActivityCreateCtrl", ['$scope', 'Activity', 'Restangular'  ,($scope, Activity, Restangular) ->
+angular.module("MobileCMSApp").controller "ActivityCreateCtrl", ['$scope', 'Activity', 'Restangular', '$location'  ,($scope, Activity, Restangular, $location) ->
   Restangular.setBaseUrl('http://127.0.0.1:6008')
   Restangular.setRequestSuffix('.json')
-  $scope.awesomeThings = [
-    "HTML5 Boilerplate"
-    "AngularJS"
-    "Karma"
-  ]
-  $scope.activity = {
-    status:0
-    type:1
-  }
 
-  $scope.create = ->
-    console.log $scope.activity
-    # abc = {Activity:$scope.activity}
-    # console.log abc
-    # Restangular.all('activities').post(abc).then((activity)->
-    #   $scope.activity = activity      
-    
-    # )
+  $scope.activity =
+    type: 1
+    order: 100
+    status: 1
+    published: false
 
-  console.log 'activity create'
-  $scope.showValues = =>
-    console.log $scope.activity
+  $scope.submit = ->
+    body = {Activity:$scope.activity}
+    Restangular.all('activities').post(body).then((activity)->
+      $location.path('/activity')
+    )
 ]

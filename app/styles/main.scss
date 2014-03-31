@@ -1,0 +1,17 @@
+.color-code{
+  width:200px;
+  float:right;
+}
+.activity-table{
+  >tbody>tr>td{
+    vertical-align: middle;
+  }
+}
+.form-action{
+  .btn{
+    margin-right:5px;
+  }
+  .delete-btn{
+    float:right;
+  }
+}
