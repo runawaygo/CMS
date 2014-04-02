@@ -1,24 +1,17 @@
 "use strict"
-angular.module("MobileCMSApp").controller "ActivityListCtrl", ['$scope', 'Activity', 'Restangular' ,($scope, Activity, Restangular) ->
-  Restangular.setBaseUrl('http://127.0.0.1:6008')
-  Restangular.setRequestSuffix('.json')
+angular.module("MobileCMSApp").controller "ActivityListCtrl", [
+  '$scope'
+  'MobileService'
+  '$state' 
+  ($scope, MobileService, $state) ->
+    activities = MobileService.all('activities')
+    $scope.activityList = activities.getList().$object
+    $scope.delete = (item)->
+      item.remove().then(->
+        $scope.activityList = _.without($scope.activityList, item)
+      )
 
-  activities = Restangular.all('activities')
-  $scope.activityList = activities.getList().$object
-  $scope.spy = (item)->
-    console.log item
-    alert 'superwolf'
-  $scope.delete = (item)->
-    item.remove().then(->
-      $scope.activityList.remove((activity)-> activity.id is item.id)
-    )
-  $scope.deleteByIndex = (index)->
-    # $object[index].remove(->
-    #   alert 'superwolf'
-    # )
-  $scope.show = ->
-    alert 'superwolf'
-    console.log $scope.activityList.length
+    $scope.gotoEdit = (activityId)->$state.go('^.edit', {id:activityId})
 ]
 
 angular.module("MobileCMSApp").filter "activityPublishedTranslate", ->

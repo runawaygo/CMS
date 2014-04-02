@@ -1,21 +1,17 @@
 "use strict"
 angular.module("MobileCMSApp").controller "ActivityEditCtrl", [
   '$scope'
-  'Activity'
-  '$routeParams'
-  'Restangular'
+  '$stateParams'
+  'MobileService'
   '$location'
-  ($scope, Activity, $routeParams, Restangular, $location) ->
-    Restangular.setBaseUrl('http://127.0.0.1:6008')
-    Restangular.setRequestSuffix('.json')
-
-
-    $scope.activity = Restangular.one('activities', $routeParams.id).get().$object
+  ($scope, $stateParams, MobileService, $location) ->
+    $scope.activity = MobileService.one('activities', $stateParams.id).get().$object
 
     $scope.submit = ->
       body = {Activity: $scope.activity}
       $scope.activity.customPUT(body).then((activity)->
-        $location.path('/activity')
+        history.back()
+        scope.$apply()
       ,->
         console.log 'update error'
         console.log arguments
@@ -23,7 +19,8 @@ angular.module("MobileCMSApp").controller "ActivityEditCtrl", [
 
     $scope.delete = ->
       $scope.activity.remove().then((activity)->
-        $location.path('/activity')
+        history.back()
+        scope.$apply()
       ,->
         console.log 'delete error'
         console.log arguments

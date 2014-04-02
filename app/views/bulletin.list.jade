@@ -1,0 +1,23 @@
+div(style="padding: 0 15px;")
+  h3 公告列表 
+    small(style="float:right;")
+      .label.label-active 不显示
+      .label.label-info 聊天
+      .label.label-warning 活动
+      .label.label-success 资讯
+
+div(style="clear:both;")
+  .col-xs-6.col-sm-4(ng-repeat="category in categoryList")
+    .list-group.bulltin-list
+      li.list-group-item
+        h4(style="display:inline-block") {{category.type}}
+        a.create-btn.btn.btn-primary.btn-sm(ng-href="#/bulletin/new/{{category.filter.userType}}") 
+          span.glyphicon.glyphicon-plus
+          |&nbsp;新增
+
+      a.bulletin-item.list-group-item(ng-repeat="item in bulletinList | filter:category.filter")
+        h4.list-group-item-heading {{item.id}} 
+        p.list-group-item-text {{item.datetime | date:'yyyy-MM-dd @ h:mm'}}
+        h4
+          .bulletin-type-label.label(ng-class="{'label-info': item.type == 1, 'label-warning': item.type == 2, 'label-success': item.type == 3}" ) {{item.type | bulletinTypeTranslate}} : {{item.detailId}}
+        p.list-group-item-text {{item.content}}

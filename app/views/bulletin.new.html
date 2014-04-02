@@ -1,0 +1,60 @@
+
+<form name="" role="form" ng-submit="submit()" class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"></div>
+    <h3 ng-hide="activity.id" class="col-sm-6">创建公告</h3>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">用户类型 :</label>
+    <div class="col-sm-6">
+      <div ng-model="bulletin.userType" bs-radio-group="bs-radio-group" class="btn-group">
+        <label ng-class="{'btn-success': bulletin.userType == 0}" class="btn btn-default">
+          <input type="radio" value="0"/>游客
+        </label>
+        <label ng-class="{'btn-success': bulletin.userType == 1}" class="btn btn-default">
+          <input type="radio" value="1"/>注册用户
+        </label>
+        <label ng-class="{'btn-success': bulletin.userType == 3}" class="btn btn-default">
+          <input type="radio" value="3"/>激活客户
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">内容 :</label>
+    <div class="col-sm-6">
+      <input type="text" ng-model="bulletin.content" placeholder="公告内容" ng-required="true" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">公告类型 :</label>
+    <div class="col-sm-6">
+      <div ng-model="bulletin.type" bs-radio-group="bs-radio-group" class="btn-group">
+        <label class="btn btn-default">
+          <input type="radio" value="0"/>不显示
+        </label>
+        <label ng-class="{'btn-info': bulletin.type == 1}" class="btn btn-default">
+          <input type="radio" value="1"/>聊天
+        </label>
+        <label ng-class="{'btn-warning': bulletin.type == 2}" class="btn btn-default">
+          <input type="radio" value="2"/>活动
+        </label>
+        <label ng-class="{'btn-success': bulletin.type == 3}" class="btn btn-default">
+          <input type="radio" value="3"/>资讯
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">引用ID :</label>
+    <div class="col-sm-6">
+      <input type="text" ng-model="bulletin.detailId" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group form-action">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;创建 </button><a back-button="" class="btn btn-default"><span class="glyphicon glyphicon-off"></span>&nbsp;取消</a>
+    </div>
+  </div>
+</form>

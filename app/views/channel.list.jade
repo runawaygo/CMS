@@ -1,0 +1,19 @@
+h3 消息列表
+
+.list-group
+  a.channel-item.list-group-item(ng-repeat="item in channelList")
+    .media
+      .pull-left(ng-show="{{item.iconUrl}}")
+        img.media-object(src="{{item.iconUrl}}")
+      .media-body
+        h3.list-group-item-heading 
+          | {{item.id}} : {{item.title}}  
+          span.text-muted --{{item.displayType}}  
+
+        h4
+          .date-label.text-muted {{item.updateTime | date:'yyyy-MM-dd @ h:mm'}}
+
+        h4.text-primary(ng-show="item.latestNews") {{item.latestNews}}
+
+        h4.text-muted {{item.desc}}
+        

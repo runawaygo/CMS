@@ -1,0 +1,26 @@
+
+<div ng-controller="ActivityListCtrl" class="col-md-4">
+  <h2><a ng-href="#/activity" class="h2"> 活动列表</a><a ng-href="#/activity/new" class="create-btn btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></h2>
+  <div class="list-group"><a ng-repeat="item in activityList | filter:{published:true} | orderBy:['status','order']:!reverse" ng-href="#/activity/edit/{{item.id}}" class="activity-item list-group-item"><img src="{{item.img}}" style="width:100%;" ng-show="item.img" class="img-rounded"/>
+      <h4 style="margin-top:5px;" class="list-group-item-heading"> {{item.id}} - {{item.title}}</h4>
+      <h4 class="list-group-item-heading"><span ng-class="{'label-warning': item.status == 0 &amp;&amp; item.published, 'label-info': item.published, 'label-active': !item.published}" class="label">{{item.status | activityStatusTranslate}}</span><span>&nbsp;</span><span class="label label-success">{{item.type | activityTypeTranslate}}</span><span>&nbsp;</span><span class="label label-default">{{item.updateTime | date:'yyyy-MM-dd @ hh:mm'}}      </span></h4>
+      <h4 class="list-group-item-text">{{item.desc}}  </h4></a></div>
+</div>
+<div ng-controller="BulletinListCtrl" class="col-md-4">
+  <h2><a ng-href="#/bulletin" class="h2"> 公告</a><a ng-href="#/bulletin/new/0" class="create-btn btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></h2>
+  <div class="list-group"><a ng-repeat="item in activeBulletinList | filter:category.filter | orderBy:'userType'" class="bulletin-item list-group-item">
+      <h4 class="list-group-item-heading">{{item.userType | bulletinUserTypeTranslate}} - {{item.id}}</h4>
+      <p class="list-group-item-text">{{item.datetime | date:'yyyy-MM-dd @ h:mm'}}</p>
+      <h4>
+        <div ng-class="{'label-default': item.type == 0, 'label-info': item.type == 1, 'label-warning': item.type == 2, 'label-success': item.type == 3}" class="bulletin-type-label label">{{item.type | bulletinTypeTranslate}} <span ng-show="item.detailId">: {{item.detailId}}</span></div>
+      </h4>
+      <p class="list-group-item-text">{{item.content}}</p></a></div>
+</div>
+<div ng-controller="ChannelListCtrl" class="col-md-4">
+  <h2><a ng-href="#/channel" class="h2"> 消息列表</a></h2>
+  <div class="list-group"><a ng-repeat="item in channelList" class="channel-item list-group-item">
+      <h4 class="list-group-item-heading">{{item.id}} : {{item.title}} </h4>
+      <p class="text-muted">@ {{item.updateTime | date:'yyyy-MM-dd h:mm'}}</p>
+      <p ng-show="item.latestNews" class="list-group-item-text">{{item.latestNews}}</p>
+      <p ng-hide="item.latestNews" class="list-group-item-text">{{item.desc}}</p></a></div>
+</div>

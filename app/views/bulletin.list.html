@@ -1,0 +1,23 @@
+
+<div style="padding: 0 15px;">
+  <h3>公告列表 <small style="float:right;">
+      <div class="label label-active">不显示</div>
+      <div class="label label-info">聊天</div>
+      <div class="label label-warning">活动</div>
+      <div class="label label-success">资讯</div></small></h3>
+</div>
+<div style="clear:both;">
+  <div ng-repeat="category in categoryList" class="col-xs-6 col-sm-4">
+    <div class="list-group bulltin-list">
+      <li class="list-group-item">
+        <h4 style="display:inline-block">{{category.type}}</h4><a ng-href="#/bulletin/new/{{category.filter.userType}}" class="create-btn btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增</a>
+      </li><a ng-repeat="item in bulletinList | filter:category.filter" class="bulletin-item list-group-item">
+        <h4 class="list-group-item-heading">{{item.id}} </h4>
+        <p class="list-group-item-text">{{item.datetime | date:'yyyy-MM-dd @ h:mm'}}</p>
+        <h4>
+          <div ng-class="{'label-info': item.type == 1, 'label-warning': item.type == 2, 'label-success': item.type == 3}" class="bulletin-type-label label">{{item.type | bulletinTypeTranslate}} : {{item.detailId}}</div>
+        </h4>
+        <p class="list-group-item-text">{{item.content}}</p></a>
+    </div>
+  </div>
+</div>

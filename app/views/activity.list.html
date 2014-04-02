@@ -1,43 +1,42 @@
 
-<div style="padding :10px"><a ng-href="#/activity/new" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增活动</a>
-  <table class="table color-code">
+<h3>活动列表</h3><a ng-href="#/activity/new" class="create-btn btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增活动</a>
+<table class="table color-code">
+  <tr>
+    <td class="info">发布</td>
+    <td class="warning">发布但关闭</td>
+    <td class="active">未发布</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<table class="table table-hover activity-table">
+  <thead>
     <tr>
-      <td class="info">发布</td>
-      <td class="warning">发布但关闭</td>
-      <td class="active">未发布</td>
+      <th>ID</th>
+      <th>名称</th>
+      <th>参与人数</th>
+      <th>类型</th>
+      <th>状态</th>
+      <th>优先级</th>
+      <th>发布</th>
+      <th>操作</th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in activityList" ng-click="gotoEdit(item.id)" ng-class="{warning: item.status == 0 &amp;&amp; item.published, info: item.published, active: !item.published}">
+      <td>{{item.id}} </td>
+      <td>{{item.title}}</td>
+      <td>{{item.participate}}</td>
+      <td>{{item.type | activityTypeTranslate}}</td>
+      <td>{{item.status | activityStatusTranslate}}</td>
+      <td>{{item.order}}</td>
+      <td>{{item.published | activityPublishedTranslate}}</td>
+      <td><a ng-href="#/activity/edit/{{item.id}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑      </a>
+        <div ng-click="delete(item)" ng-hide="item.published" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</div>
+      </td>
     </tr>
-  </table>
-  <table class="table table-hover activity-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>名称</th>
-        <th>参与人数</th>
-        <th>类型</th>
-        <th>状态</th>
-        <th>优先级</th>
-        <th>发布</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in activityList" ng-class="{warning: item.status == 0 &amp;&amp; item.published, info: item.published, active: !item.published}">
-        <td>{{item.id}} </td>
-        <td>{{item.title}}</td>
-        <td>{{item.participate}}</td>
-        <td>{{item.type | activityTypeTranslate}}</td>
-        <td>{{item.status | activityStatusTranslate}}</td>
-        <td>{{item.order}}</td>
-        <td>{{item.published | activityPublishedTranslate}}</td>
-        <td><a ng-href="#/activity/{{item.id}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑      </a>
-          <div ng-click="delete(item)" ng-hide="item.published" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  </tbody>
+</table>

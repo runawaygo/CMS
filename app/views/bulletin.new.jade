@@ -1,0 +1,64 @@
+form.form-horizontal(name=''  role='form' ng-submit="submit()")
+  div.form-group
+    div.col-sm-2
+    h3.col-sm-6(ng-hide="activity.id") 创建公告
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 用户类型 :
+    div.col-sm-6
+      div.btn-group(ng-model="bulletin.userType" bs-radio-group)
+        label.btn.btn-default(ng-class="{'btn-success': bulletin.userType == 0}")
+          input(type="radio" value="0")
+          | 游客
+        label.btn.btn-default(ng-class="{'btn-success': bulletin.userType == 1}")
+          input(type="radio" value="1")
+          | 注册用户
+        label.btn.btn-default(ng-class="{'btn-success': bulletin.userType == 3}")
+          input(type="radio" value="3")
+          | 激活客户
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 内容 :
+    div.col-sm-6
+      input.form-control(type="text" ng-model="bulletin.content" placeholder="公告内容" ng-required="true")
+
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 公告类型 :
+    div.col-sm-6
+      div.btn-group(ng-model="bulletin.type" bs-radio-group)
+        label.btn.btn-default
+          input(type="radio" value="0") 
+          | 不显示
+        label.btn.btn-default(ng-class="{'btn-info': bulletin.type == 1}")
+          input(type="radio" value="1") 
+          | 聊天
+        label.btn.btn-default(ng-class="{'btn-warning': bulletin.type == 2}")
+          input(type="radio" value="2") 
+          | 活动
+        label.btn.btn-default(ng-class="{'btn-success': bulletin.type == 3}")
+          input(type="radio" value="3") 
+          | 资讯
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 引用ID :
+    div.col-sm-6
+      input.form-control(type="text", ng-model="bulletin.detailId")
+
+  
+  div.form-group.form-action
+    label.col-sm-2.control-label
+    div.col-sm-6
+      button.btn.btn-primary(type="submit")
+        span.glyphicon.glyphicon-ok
+        |&nbsp;创建 
+      a.btn.btn-default(back-button="")
+        span.glyphicon.glyphicon-off
+        |&nbsp;取消
+
+
+

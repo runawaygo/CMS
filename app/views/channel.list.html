@@ -1,0 +1,14 @@
+
+<h3>消息列表</h3>
+<div class="list-group"><a ng-repeat="item in channelList" class="channel-item list-group-item">
+    <div class="media">
+      <div ng-show="{{item.iconUrl}}" class="pull-left"><img src="{{item.iconUrl}}" class="media-object"/></div>
+      <div class="media-body">
+        <h3 class="list-group-item-heading">{{item.id}} : {{item.title}}  <span class="text-muted">--{{item.displayType}}  </span></h3>
+        <h4>
+          <div class="date-label text-muted">{{item.updateTime | date:'yyyy-MM-dd @ h:mm'}}</div>
+        </h4>
+        <h4 ng-show="item.latestNews" class="text-primary">{{item.latestNews}}</h4>
+        <h4 class="text-muted">{{item.desc}}</h4>
+      </div>
+    </div></a></div>

@@ -1,44 +1,43 @@
-div(style="padding :10px")
-  a.btn.btn-primary(ng-href="#/activity/new") 
-    span.glyphicon.glyphicon-plus
-    |&nbsp;新增活动
-  //- div.btn.btn-primary(ng-click="show()") Show
-  table.table.color-code
+h3 活动列表
+a.create-btn.btn.btn-primary(ng-href="#/activity/new") 
+  span.glyphicon.glyphicon-plus
+  |&nbsp;新增活动
+//- div.btn.btn-primary(ng-click="show()") Show
+table.table.color-code
+  tr
+    td.info 发布
+    td.warning 发布但关闭
+    td.active 未发布
+  tr
+    td
+    td
+    td
+table.table.table-hover.activity-table
+  thead
     tr
-      td.info 发布
-      td.warning 发布但关闭
-      td.active 未发布
-    tr
+      th ID
+      th 名称
+      th 参与人数
+      th 类型
+      th 状态
+      th 优先级
+      th 发布
+      th 操作
+  tbody
+    tr(ng-repeat="item in activityList" ng-click="gotoEdit(item.id)" ng-class="{warning: item.status == 0 && item.published, info: item.published, active: !item.published}" )
+      td #[{{item.id}}] 
+      td {{item.title}}
+      td {{item.participate}}
+      td {{item.type | activityTypeTranslate}}
+      td {{item.status | activityStatusTranslate}}
+      td {{item.order}}
+      td {{item.published | activityPublishedTranslate}}
       td
-      td
-      td
+        a.btn.btn-sm.btn-primary(ng-href="#/activity/edit/{{item.id}}") 
+          span.glyphicon.glyphicon-edit
+          |&nbsp;编辑      
 
-  table.table.table-hover.activity-table
-    thead
-      tr
-        th ID
-        th 名称
-        th 参与人数
-        th 类型
-        th 状态
-        th 优先级
-        th 发布
-        th 操作
-    tbody
-      tr(ng-repeat="item in activityList" ng-class="{warning: item.status == 0 && item.published, info: item.published, active: !item.published}" )
-        td #[{{item.id}}] 
-        td {{item.title}}
-        td {{item.participate}}
-        td {{item.type | activityTypeTranslate}}
-        td {{item.status | activityStatusTranslate}}
-        td {{item.order}}
-        td {{item.published | activityPublishedTranslate}}
-        td
-          a.btn.btn-sm.btn-primary(ng-href="#/activity/{{item.id}}") 
-            span.glyphicon.glyphicon-edit
-            |&nbsp;编辑      
-
-          div.btn.btn-sm.btn-danger(ng-click="delete(item)" ng-hide="item.published") 
-            span.glyphicon.glyphicon-remove 
-            |&nbsp;删除
-            
+        div.btn.btn-sm.btn-danger(ng-click="delete(item)" ng-hide="item.published") 
+          span.glyphicon.glyphicon-remove 
+          |&nbsp;删除
+          

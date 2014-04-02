@@ -1,0 +1,8 @@
+form(role='form' ng-submit="submit()")
+  .form-group
+    label(for='username-input' ) 用户名
+    input#username-input.form-control(type='text' ng-model="userinfo.username" placeholder='Your username')
+  .form-group
+    label(for='exampleInputPassword1') 密码
+    input.form-control(type='password' placeholder='Password' ng-model="userinfo.userinfo")
+  button.btn.btn-default(type='submit') 确定

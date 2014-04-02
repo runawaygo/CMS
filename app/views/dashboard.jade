@@ -1,0 +1,51 @@
+.col-md-4(ng-controller="ActivityListCtrl") 
+  h2
+    a.h2(ng-href="#/activity")  活动列表
+    a.create-btn.btn.btn-primary(ng-href="#/activity/new") 
+      span.glyphicon.glyphicon-plus
+
+  .list-group
+    a.activity-item.list-group-item(
+      ng-repeat="item in activityList | filter:{published:true} | orderBy:['status','order']:!reverse" 
+      ng-href="#/activity/edit/{{item.id}}"
+    )
+      img.img-rounded(src="{{item.img}}" style="width:100%;" ng-show="item.img")
+      h4.list-group-item-heading(style="margin-top:5px;")  {{item.id}} - {{item.title}}
+      h4.list-group-item-heading
+        span.label(ng-class="{'label-warning': item.status == 0 && item.published, 'label-info': item.published, 'label-active': !item.published}")
+          | {{item.status | activityStatusTranslate}}
+        span &nbsp;
+        span.label.label-success {{item.type | activityTypeTranslate}}
+        span &nbsp;
+        span.label.label-default {{item.updateTime | date:'yyyy-MM-dd @ hh:mm'}}      
+      h4.list-group-item-text {{item.desc}}  
+
+.col-md-4(ng-controller="BulletinListCtrl") 
+  h2
+    a.h2(ng-href="#/bulletin")  公告
+    a.create-btn.btn.btn-primary(ng-href="#/bulletin/new/0") 
+      span.glyphicon.glyphicon-plus
+
+  .list-group
+    a.bulletin-item.list-group-item(ng-repeat="item in activeBulletinList | filter:category.filter | orderBy:'userType'")
+      h4.list-group-item-heading {{item.userType | bulletinUserTypeTranslate}} - {{item.id}}
+      p.list-group-item-text {{item.datetime | date:'yyyy-MM-dd @ h:mm'}}
+      h4
+        .bulletin-type-label.label(ng-class="{'label-default': item.type == 0, 'label-info': item.type == 1, 'label-warning': item.type == 2, 'label-success': item.type == 3}" ) 
+          | {{item.type | bulletinTypeTranslate}} 
+          span(ng-show="item.detailId") : {{item.detailId}}
+      p.list-group-item-text {{item.content}}
+
+.col-md-4(ng-controller="ChannelListCtrl")
+  h2
+    a.h2(ng-href="#/channel")  消息列表
+
+  div.list-group
+    a.channel-item.list-group-item(ng-repeat="item in channelList")
+      h4.list-group-item-heading {{item.id}} : {{item.title}} 
+      p.text-muted @ {{item.updateTime | date:'yyyy-MM-dd h:mm'}}
+
+      p.list-group-item-text(ng-show="item.latestNews") {{item.latestNews}}
+      p.list-group-item-text(ng-hide="item.latestNews") {{item.desc}}
+      
+
