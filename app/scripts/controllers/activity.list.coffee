@@ -5,7 +5,9 @@ angular.module("MobileCMSApp").controller "ActivityListCtrl", [
   '$state' 
   ($scope, MobileService, $state) ->
     activities = MobileService.all('activities')
-    $scope.activityList = activities.getList().$object
+    activitiesList = activities.getList()
+
+    $scope.activityList = activitiesList.$object
     $scope.delete = (item)->
       item.remove().then(->
         $scope.activityList = _.without($scope.activityList, item)

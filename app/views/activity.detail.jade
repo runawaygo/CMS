@@ -68,11 +68,13 @@ form.form-horizontal(name=''  role='form' ng-submit="submit()")
       | 图片 :
     div.col-sm-6
       input.form-control(name="img", type="url", ng-model="activity.img", ng-required="true")
+
   div.form-group
     label.col-sm-2.control-label
       | 分享图片 :
     div.col-sm-6
       input.form-control(name="shareImg", type="url", ng-model="activity.shareImg", ng-required="true")
+
   div.form-group
     label.col-sm-2.control-label
       | 预览图片 :
@@ -87,9 +89,22 @@ form.form-horizontal(name=''  role='form' ng-submit="submit()")
 
   div.form-group
     label.col-sm-2.control-label
-      | 分享 :
+      | 参加奖励 :
+    div.col-sm-6
+      input.form-control(name="inReward", type="number", ng-model="activity.inReward")
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 分享奖励 :
+    div.col-sm-6
+      input.form-control(name="shareReward", type="number", ng-model="activity.shareReward")
+
+  div.form-group
+    label.col-sm-2.control-label
+      | 分享次数 :
     div.col-sm-6
       input.form-control(name="share", type="number", ng-model="activity.share", readonly="readonly")
+
 
   div.form-group.form-action
     label.col-sm-2.control-label

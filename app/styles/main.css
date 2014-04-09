@@ -1,1 +1,65 @@
-/* Will be compiled down to a single stylesheet with your sass files */
+/* line 1, main.scss */
+.create-btn {
+  float: right;
+}
+
+/* line 4, main.scss */
+.color-code {
+  width: 200px;
+}
+
+/* line 8, main.scss */
+.activity-table > tbody > tr > td {
+  vertical-align: middle;
+}
+/* line 11, main.scss */
+.activity-table tr {
+  cursor: pointer;
+}
+
+/* line 15, main.scss */
+.bulletin-item {
+  cursor: pointer;
+  position: relative;
+}
+/* line 18, main.scss */
+.bulletin-item .label {
+  display: block;
+  top: 10px;
+  right: 15px;
+  position: absolute;
+}
+
+/* line 27, main.scss */
+.bulltin-list .bulletin-item {
+  opacity: 0.5;
+}
+/* line 29, main.scss */
+.bulltin-list .bulletin-item:hover {
+  opacity: 1;
+}
+/* line 32, main.scss */
+.bulltin-list .bulletin-item:nth-child(2), .bulltin-list .bulletin-item:nth-child(2) {
+  opacity: 1;
+}
+/* line 35, main.scss */
+.bulltin-list .bulletin-item:nth-child(2) {
+  border-bottom: 3px solid #5bc0de;
+}
+
+/* line 42, main.scss */
+.channel-item .date-label {
+  display: block;
+  top: 10px;
+  right: 15px;
+  position: absolute;
+}
+
+/* line 51, main.scss */
+.form-action .btn {
+  margin-right: 5px;
+}
+/* line 54, main.scss */
+.form-action .delete-btn {
+  float: right;
+}

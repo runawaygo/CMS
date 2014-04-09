@@ -17,7 +17,7 @@ angular.module('common.server.list', [])
         voice_resource_server: 'http://test.tt.audio.baidao.com'
         device_server: 'http://test.tt.device.baidao.com'
       dev:
-        channel_server: 'http://localhost:6008'
+        channel_server: 'http://127.0.0.1:6008'
     yg:
       prod:
         chat_server: 'http://yg.chat.baidao.com'
@@ -34,5 +34,5 @@ angular.module('common.server.list', [])
         voice_resource_server: 'http://test.yg.audio.baidao.com'
         device_server: 'http://test.yg.device.baidao.com'
       dev:
-        channel_server: 'http://localhost:6008'
+        channel_server: 'http://127.0.0.1:6008'
       

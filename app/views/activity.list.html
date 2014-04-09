@@ -22,6 +22,7 @@
       <th>状态</th>
       <th>优先级</th>
       <th>发布</th>
+      <th>分享</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
       <td>{{item.type | activityTypeTranslate}}</td>
       <td>{{item.status | activityStatusTranslate}}</td>
       <td>{{item.order}}</td>
+      <td>{{item.share}}</td>
       <td>{{item.published | activityPublishedTranslate}}</td>
       <td><a ng-href="#/activity/edit/{{item.id}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑      </a>
         <div ng-click="delete(item)" ng-hide="item.published" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</div>

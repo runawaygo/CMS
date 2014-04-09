@@ -5,5 +5,7 @@ angular.module("MobileCMSApp").controller "ChannelListCtrl", [
   '$state' 
   ($scope, MobileService, $state) ->
     channels = MobileService.all('channels')
-    $scope.channelList = channels.getList().$object
+    channelList = channels.getList()
+
+    $scope.channelList = channelList.$object
 ]

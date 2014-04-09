@@ -22,6 +22,7 @@ table.table.table-hover.activity-table
       th 状态
       th 优先级
       th 发布
+      th 分享
       th 操作
   tbody
     tr(ng-repeat="item in activityList" ng-click="gotoEdit(item.id)" ng-class="{warning: item.status == 0 && item.published, info: item.published, active: !item.published}" )
@@ -31,6 +32,7 @@ table.table.table-hover.activity-table
       td {{item.type | activityTypeTranslate}}
       td {{item.status | activityStatusTranslate}}
       td {{item.order}}
+      td {{item.share}}
       td {{item.published | activityPublishedTranslate}}
       td
         a.btn.btn-sm.btn-primary(ng-href="#/activity/edit/{{item.id}}") 
